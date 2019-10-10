@@ -7,11 +7,11 @@ It does this by sitting between MMDVMHost and the Nextion Display.
 This program takes the commands, sent by MMDVMHost and translates,
 changes, adds or removes these commands.
 
-Since the program has to read MMDVM.ini to know the Layout (for
-setting the baudrate) and other parameters (i.e. for knowing
-the frequency and location), the parameters for the NextionDriver
-itself are also located in the MMDVM configuration file,
-in an extra section [NextionDriver].
+Since the program has to read MMDVM.ini (/etc/mmdvmhost on pi-star) 
+to know the Layout (for setting the baudrate) and other parameters
+(i.e. for knowing the frequency and location), the parameters for 
+the NextionDriver itself are also located in the MMDVM configuration
+file, in an extra section [NextionDriver].
 
 As stated above, the NextionDriver program will change the commands
 as needed and adds extra info (i.e. temperature, TG's info, ...) 
@@ -24,9 +24,6 @@ changed.
 When the files 'groups.txt' and 'stripped.csv' are present, usernames
 and talkgroup names will be looked up and sent to the display. 
 NOTE1 : both files have to be sorted in ascending ID order ! 
-NOTE2 : for the user data lookup to work, you MUST switch off 
-         the DMRID lookup of MMDVMHost (check README-examples
-         in the Nextion subdirectory)
 
 The program also has the ability of receiving commands from the Nextion
 display. This way, one can provide buttons on a layout and do something
@@ -39,13 +36,13 @@ MMDVMHost with buttons on the Nextion display !
 
 When the Nextion display is connected to the serial port of the modem,
 NextionDriver V1.03 and later is able to address that port. 
-How does dis work ?
+How does this work ?
 Normally, the data to the display goes directly from MMDVMHost to the
 modem, tagged as data for the serial port. The modem will then pass the
 data to the serial port.
 By enabling transparent data, we are able to inject data into MMDVMHost
 and we will tag it as data for the display (this can only be done by
-enabling sendFrameType).
+enabling sendFrameType=1).
 
 Data from the Nextion (when pressing buttons) will be treated similar and
 will exit MMDVMHost as transparent data.
