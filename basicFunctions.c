@@ -386,5 +386,5 @@ void basicFunctions() {
         sendCommand(text);
         sendCommand("click S0,1");
     }
-
+    strncpy(TXbuffer, "", sizeof(TXbuffer));    //KE7FNS clear TXBuffer to prevent duplicate  messages being sent rapidly. 
 }

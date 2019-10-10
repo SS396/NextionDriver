@@ -621,6 +621,7 @@ int main(int argc, char *argv[])
     screenLayout=2;
     inhibit=0;
 
+    userDBDelimiter=',';                       //  KE7FNS  set default delimiter to ',' in case users don't add it to MMDVMHost configuration
     userDBId=0;
     userDBCall=1;
     userDBName=2;
@@ -787,6 +788,7 @@ int main(int argc, char *argv[])
     flash=checkDisplay(model);
     if (flash==0) writelog(LOG_ERR,"No Nextion display found.");
 
+    sendCommand("bkcmd=0");        //  KE7FNS  force Nextion to not report status results to clean up serial repeater traffic to make it identical to MMDVMHost communications
     sendCommand("sleep=0");
     sendCommand("page 0");
     sendCommand("cls 0");
